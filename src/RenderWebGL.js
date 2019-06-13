@@ -189,7 +189,7 @@ class RenderWebGL extends EventEmitter {
         this.on(RenderConstants.Events.NativeSizeChanged, this.onNativeSizeChanged);
 
         this.setBackgroundColor(1, 1, 1);
-        this.setStageSize(xLeft || -240, xRight || 240, yBottom || -180, yTop || 180);
+        this.setStageSize(xLeft || -406, xRight || 406, yBottom || -187.5, yTop || 187.5);
         this.resize(this._nativeSize[0], this._nativeSize[1]);
 
         gl.disable(gl.DEPTH_TEST);
@@ -1627,14 +1627,14 @@ class RenderWebGL extends EventEmitter {
             }
 
             twgl.setUniforms(currentShader, uniforms);
-            
+
             /* adjust blend function for this skin */
             if (drawable.skin.hasPremultipliedAlpha){
                 gl.blendFuncSeparate(gl.ONE, gl.ONE_MINUS_SRC_ALPHA, gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
             } else {
                 gl.blendFuncSeparate(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA, gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
             }
-            
+
             twgl.drawBufferInfo(gl, this._bufferInfo, gl.TRIANGLES);
         }
 
